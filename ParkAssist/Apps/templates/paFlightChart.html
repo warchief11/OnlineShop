@@ -1,0 +1,25 @@
+﻿<div>
+    <p>{{gateId}}</p>
+    <table st-table="reservations" class="table table-striped">
+        <thead>
+            <tr>
+                <th>Gate</th>
+                <th>Flight</th>
+                <th>Destination</th>
+                <th>Arrival</th>
+                <th>Departure</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="reservation in reservations">
+                <td>{{reservation.GateId}}</td>
+                <td>{{reservation.FlightName}}</td>
+                <td>{{reservation.Destination}}</td>
+                <td>{{reservation.Arrival | date:'shortTime'}}</td>
+                <td>{{reservation.Departure | date:'shortTime'}}</td>
+                <td>{{reservation.Status}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
