@@ -1,0 +1,41 @@
+﻿<div>
+    <h1>Checkout</h1>
+
+    <table border="1" class="table-condensed table-bordered tab-content table-responsive table-striped">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Qunatity</th>
+                <th>Cost</th>
+                <th/>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="orderItem in vm.order.OrderItems">
+                <td>{{ orderItem.Item.Id }}</td>
+                <td>{{ orderItem.Item.Description }}</td>
+                <td>{{ orderItem.Item.Price | currency }}</td>
+                <td>{{ orderItem.Quantity }}</td>
+                <td>{{ orderItem.Quantity * orderItem.Item.Price | currency }}</td>
+                <td><div><a class="btn btn-block btn-danger" ng-click="vm.removeFromBasket(orderItem.Item.Id)">Remove</a></div></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Total cost:</td>
+                <td>{{vm.order.TotalCost}}</td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <h4>Item cost: {{vm.order.ItemCost}}</h4>
+    <h4>Shipping cost: {{vm.order.ShippingCost}}</h4>
+    <h3>Total cost: {{vm.order.TotalCost}}</h3>
+
+</div>

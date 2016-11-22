@@ -1,0 +1,15 @@
+﻿<div>
+    <h1>Shopping - Dashboard</h1>
+    <select ng-model="vm.selectedGate" ng-options="gate as gate.Name for gate in vm.gates track by gate.Id" ng-change="vm.gateSelected()" />
+    <ul class="row list-unstyled  list-inline">
+        <li ng-repeat="item in vm.items">
+            <div>
+                <img class="img-responsive img-thumbnail" ng-src="{{item.ImageURL}}1" alt="{{item.Description}}" />
+                <h3>{{ item.id }}</h3>
+                <h4>{{ item.Description }}</h4>
+                <p>Price: {{ item.Price | currency}}</p>
+                <a class="btn btn-primary" ng-click="vm.addToBasket(item)">Add to Cart</a>
+            </div>
+        </li>
+    </ul>
+</div>
