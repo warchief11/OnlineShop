@@ -10,17 +10,6 @@
                  url: "/",
                  templateUrl: 'Apps/templates/dashboard.html',
                  controller: 'DashboardCtrl as vm'
-                 //resolve: {
-                 //    Parking: ['Parking',
-                 //      function (parking) {
-                 //          return parking.all();
-                 //      }]
-                 //}
-             })
-             .state("dashboard.reservations", {
-                 url: "/",
-                 templateUrl: 'Apps/templates/reservations.html',
-                 controller: 'ReservationsCtrl'
              })
              .state('checkout', {
                  url: '/checkout',

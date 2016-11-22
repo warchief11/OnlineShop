@@ -18,8 +18,8 @@ function DashboardCtrl($scope, Order) {
         });
     };
 
-    vm.addToBasket = function (item) {
-        vm.items = Order.addToBasket(item)
-    }
+    //vm.addToBasket = function (item) {
+    //    vm.items = Order.addToBasket(item)
+    //};
     return vm;
 };

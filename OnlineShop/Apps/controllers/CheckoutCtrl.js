@@ -6,12 +6,12 @@ CheckoutCtrl.$inject = ['$scope', 'Order'];
 function CheckoutCtrl($scope, Order) {
     var vm = this;
     //TODO: remove hardcoding
-    this.getCart = Order.getOrder().then(function (order) {
+    vm.getCart = Order.getOrder().then(function (order) {
         vm.order = order;
     });
 
-    vm.removeItem = function (item) {
-        Order.removeFromBasket(item);
+    vm.removeItem = function (id) {
+        Order.removeFromBasket(id);
         vm.getCart();
     };
     return vm;

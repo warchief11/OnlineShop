@@ -8,7 +8,6 @@ namespace OnlineShop.Models
     public class OrderService : IOrderService
     {
         private static List<Item> _items = null;
-        private static List<OrderItem> _orderItems = null;
         private static Basket _basket;
         private static Order _order;
         #region Static Helper Methods
@@ -81,14 +80,14 @@ namespace OnlineShop.Models
 
         public Order GetOrder(int id)
         {
-            var order = new Order();
-            order.Id = id;
-            order.OrderItems = GetBasket(id).OrderItems;
-            order.ItemCost = order.OrderItems.Any() ? order.OrderItems.Sum(o => o.Item.Price * o.Quantity) : 0;
-            order.Shippingcost = 14;
-            order.TotalCost = order.ItemCost + order.Shippingcost;
-            order.ShippedTo = "Mr Smith";
-            return order;
+            _order = _order ?? new Order();
+            _order.Id = id;
+            _order.OrderItems = GetBasket(id).OrderItems;
+            _order.ItemCost = _order.OrderItems.Any() ? _order.OrderItems.Sum(o => o.Item.Price * o.Quantity) : 0;
+            _order.Shippingcost = 14;
+            _order.TotalCost = _order.ItemCost + _order.Shippingcost;
+            _order.ShippedTo = "Mr Smith";
+            return _order;
         }
 
         public Basket Post(Basket basket)

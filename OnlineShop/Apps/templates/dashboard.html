@@ -1,6 +1,5 @@
 ﻿<div>
     <h1>Shopping - Dashboard</h1>
-    <select ng-model="vm.selectedGate" ng-options="gate as gate.Name for gate in vm.gates track by gate.Id" ng-change="vm.gateSelected()" />
     <ul class="row list-unstyled  list-inline">
         <li ng-repeat="item in vm.items">
             <div>

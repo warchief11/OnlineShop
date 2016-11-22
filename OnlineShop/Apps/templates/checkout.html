@@ -1,5 +1,5 @@
 ﻿<div>
-    <h1>Checkout</h1>
+    <h1>Welcome to Checkout Page</h1>
 
     <table border="1" class="table-condensed table-bordered tab-content table-responsive table-striped">
         <thead>
@@ -19,7 +19,7 @@
                 <td>{{ orderItem.Item.Price | currency }}</td>
                 <td>{{ orderItem.Quantity }}</td>
                 <td>{{ orderItem.Quantity * orderItem.Item.Price | currency }}</td>
-                <td><div><a class="btn btn-block btn-danger" ng-click="vm.removeFromBasket(orderItem.Item.Id)">Remove</a></div></td>
+                <td><div><button class="btn btn-danger" ng-click="vm.removeItem(orderItem.Item.Id)">Remove</button></div></td>
             </tr>
         </tbody>
         <tfoot>
@@ -38,4 +38,5 @@
     <h4>Shipping cost: {{vm.order.ShippingCost}}</h4>
     <h3>Total cost: {{vm.order.TotalCost}}</h3>
 
+    <button class="btn btn-primary" ng-click="vm.checkout()">Checkout</button>
 </div>
