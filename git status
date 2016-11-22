@@ -1,0 +1,148 @@
+[33mcommit 0db561221ad0ddf2538cf8204095df508e9be6c3[m
+Author: warchief11 <nardeep.chaudhary@gmail.com>
+Date:   Thu Oct 6 23:09:19 2016 +1100
+
+    added ui-router
+
+[1mdiff --git a/ParkAssist/App_Start/BundleConfig.cs b/ParkAssist/App_Start/BundleConfig.cs[m
+[1mindex c9fe6a4..cc667c7 100644[m
+[1m--- a/ParkAssist/App_Start/BundleConfig.cs[m
+[1m+++ b/ParkAssist/App_Start/BundleConfig.cs[m
+[36m@@ -12,12 +12,18 @@[m [mnamespace ParkAssist[m
+         public static void RegisterBundles(BundleCollection bundles)[m
+         {[m
+             bundles.Add(new ScriptBundle("~/bundles/vendor")[m
+[31m-                   .IncludeDirectory("~/Scripts/", "*.js", true));[m
+[32m+[m[32m                   .Include("~/Scripts/jquery-1.10.2.min.js")[m
+[32m+[m[32m                   .Include("~/Scripts/bootstrap.min.js")[m
+[32m+[m[32m                   .Include("~/Scripts/angular.min.js")[m
+[32m+[m[32m                   .Include("~/Scripts/smart-table.min.js")[m
+[32m+[m[32m                   .Include("~/Scripts/AngularUI/ui-router.min.js")[m
+[32m+[m[32m                   );[m
+ [m
+             bundles.Add(new ScriptBundle("~/bundles/custom")[m
+                 .IncludeDirectory("~/Apps/", "*.js", true)[m
+[31m-                .IncludeDirectory("~/Apps/Services", "*.js", true)[m
+[31m-                .IncludeDirectory("~/Apps/pages", "*.js", true));[m
+[32m+[m[32m                .IncludeDirectory("~/Apps/services", "*.js", true)[m
+[32m+[m[32m                .IncludeDirectory("~/Apps/controllers", "*.js", true)[m
+[32m+[m[32m                .IncludeDirectory("~/Apps/templates", "*.js", true));[m
+ [m
+ [m
+             bundles.Add(new StyleBundle("~/Content/Styles/css")[m
+[1mdiff --git a/ParkAssist/Apps/controllers/GatesDashboardCtrl.js b/ParkAssist/Apps/controllers/GatesDashboardCtrl.js[m
+[1mindex d866405..6da7efb 100644[m
+[1m--- a/ParkAssist/Apps/controllers/GatesDashboardCtrl.js[m
+[1m+++ b/ParkAssist/Apps/controllers/GatesDashboardCtrl.js[m
+[36m@@ -2,7 +2,7 @@[m
+ angular.module('flightParking', [])[m
+     .controller('GatesDashboardCtrl', ['$scope', 'Parking', function ($scope, Parking) {[m
+         var reservations;[m
+[31m-        $scope.reservations = [{}];[m
+[32m+[m[32m        $scope.reservations = [{ Id: 1, gateId: 1, flightId: 1 }, { Id: 2, gateId: 1, flightId: 2 }];[m
+         $scope.gateId = 1;[m
+         Parking.getGates().then(function (gates) {[m
+             $scope.gates = gates;[m
+[1mdiff --git a/ParkAssist/Apps/directives/Reservations.html b/ParkAssist/Apps/directives/Reservations.html[m
+[1mdeleted file mode 100644[m
+[1mindex 4a30b66..0000000[m
+[1m--- a/ParkAssist/Apps/directives/Reservations.html[m
+[1m+++ /dev/null[m
+[36m@@ -1,24 +0,0 @@[m
+[31m-﻿<div ng-controller="ReservationCtrl">[m
+[31m-    <table st-table="reservations" class="table table-striped">[m
+[31m-        <thead>[m
+[31m-            <tr>[m
+[31m-                <th>Gate</th>[m
+[31m-                <th>Flight</th>[m
+[31m-                <th>Destination</th>[m
+[31m-                <th>Arrival</th>[m
+[31m-                <th>Departure</th>[m
+[31m-                <th>Status</th>[m
+[31m-            </tr>[m
+[31m-        </thead>[m
+[31m-        <tbody>[m
+[31m-            <tr ng-repeat="reservation in reservations">[m
+[31m-                <td>{{reservation.gateName}}</td>[m
+[31m-                <td>{{reservation.flightName}}</td>[m
+[31m-                <td>{{reservation.destination}}</td>[m
+[31m-                <td>{{reservation.arrival | date:'shortTime'}}</td>[m
+[31m-                <td>{{reservation.departure | date:'shortTime'}}</td>[m
+[31m-                <td>{{reservation.status}}</td>[m
+[31m-            </tr>[m
+[31m-        </tbody>[m
+[31m-    </table>[m
+[31m-</div>[m
+[1mdiff --git a/ParkAssist/Apps/flightParkModule.js b/ParkAssist/Apps/flightParkModule.js[m
+[1mindex 60edb4a..407ce59 100644[m
+[1m--- a/ParkAssist/Apps/flightParkModule.js[m
+[1m+++ b/ParkAssist/Apps/flightParkModule.js[m
+[36m@@ -1,18 +1,68 @@[m
+ ﻿(function () {[m
+     'use Strict';[m
+ [m
+[31m-    var flightParkModule = angular.module('flightParking', ['ngRoute', 'ngAnimate']);[m
+[31m-[m
+[31m-    //flightParkModule.config('$routeProvider', function ($routeProvider) {[m
+[31m-    //    $routeProvider[m
+[31m-    //        .when('/dashboard', {[m
+[31m-    //            controller: 'dashboard',[m
+[31m-    //            templateUrl: 'ScriptsNg/pages/dashboard.html'[m
+[31m-    //        })[m
+[31m-    //        .when('/flightAdd', {[m
+[31m-    //            controller: 'flightAdd',[m
+[31m-    //            templateUrl: 'ScriptsNg/pages/flightAdd.html'[m
+[31m-    //        });[m
+[31m-    //});[m
+[31m-[m
+[31m-})();[m
+\ No newline at end of file[m
+[32m+[m[32m    var flightParkModule = angular.module('flightParking', ['ui.router']);[m
+[32m+[m
+[32m+[m[32m    flightParkModule.config( [ '$stateProvider', '$urlRouterProvider',function ($stateProvider,   $urlRouterProvider) {[m
+[32m+[m[32m        $urlRouterProvider.otherwise('/home');[m
+[32m+[m[32m        $stateProvider[m
+[32m+[m[32m             .state("home", {[m
+[32m+[m
+[32m+[m[32m                 // Use a url of "/" to set a state as the "index".[m
+[32m+[m[32m                 url: "/",[m
+[32m+[m
+[32m+[m[32m                 // Example of an inline template string. By default, templates[m
+[32m+[m[32m                 // will populate the ui-view within the parent state's template.[m
+[32m+[m[32m                 // For top level states, like this one, the parent template is[m
+[32m+[m[32m                 // the index.html file. So this template will be inserted into the[m
+[32m+[m[32m                 // ui-view within index.html.[m
+[32m+[m[32m                 template: '<p class="lead">Welcome to the UI-Router Demo</p>' +[m
+[32m+[m[32m                   '<p>Use the menu above to navigate. ' +[m
+[32m+[m[32m                   'Pay attention to the <code>$state</code> and <code>$stateParams</code> values below.</p>' +[m
+[32m+[m[32m                   '<p>Click these links—<a href="#/c?id=1">Alice</a> or ' +[m
+[32m+[m[32m                   '<a href="#/user/42">Bob</a>—to see a url redirect in action.</p>'[m
+[32m+[m
+[32m+[m[32m             })[m
+[32m+[m[32m            .state('about', {[m
+[32m+[m[32m                url: '/about',[m
+[32m+[m[32m                templateUrl: 'templates/about.html',[m
+[32m+[m[32m                controller: ['$scope', 'Parking', function ($scope, Parking) {[m
+[32m+[m[32m                    var reservations;[m
+[32m+[m[32m                    $scope.reservations = [{ Id: 1, gateId: 1, flightId: 1 }, { Id: 2, gateId: 1, flightId: 2 }];[m
+[32m+[m[32m                    $scope.gateId = 1;[m
+[32m+[m[32m                    Parking.getGates().then(function (gates) {[m
+[32m+[m[32m                        $scope.gates = gates;[m
+[32m+[m[32m                    });[m
+[32m+[m[32m                    Parking.getReservations($scope.gateId).then(function (reservations) {[m
+[32m+[m[32m                        $scope.reservations = reservations;[m
+[32m+[m[32m                    });[m
+[32m+[m[32m                }][m
+[32m+[m[32m            });[m
+[32m+[m[32m    }]);[m
+[32m+[m[41m   [m
+[32m+[m[32m    flightParkModule.run(function ($rootScope) {[m
+[32m+[m[32m        var $rootScope = angular.element(document.querySelectorAll("[ui-view]")[0]).injector().get('$rootScope');[m
+[32m+[m
+[32m+[m[32m        $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {[m
+[32m+[m[32m            console.log('$stateChangeStart to ' + toState.to + '- fired when the transition begins. toState,toParams : \n', toState, toParams);[m
+[32m+[m[32m        });[m
+[32m+[m
+[32m+[m[32m        $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams) {[m
+[32m+[m[32m            console.log('$stateChangeError - fired when an error occurs during transition.');[m
+[32m+[m[32m            console.log(
