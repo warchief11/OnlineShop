@@ -9,13 +9,11 @@
 
     this.addToBasket = function (item) {
         return $http.post('api/basket/1/item', item).then(function () {
-            return getBasket();
         });
     };
 
     this.removeFromBasket = function (id) {
-        return $http.delete('api/basket/1/item/' + id).then(function (response) {
-            return this.getItems();
+        return $http.delete('api/basket/1/item/' + id).then(function () {
         });
     };
 
@@ -29,6 +27,11 @@
         return $http.get('api/order/1').then(function (response) {
             var order = response.data;
             return order;
+        });
+    };
+    this.createOrder = function () {
+        return $http.post('api/order').then(function (response) {
+            return response.data;
         });
     };
 }])

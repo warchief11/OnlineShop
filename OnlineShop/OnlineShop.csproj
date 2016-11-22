@@ -142,15 +142,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Apps\controllers\CheckoutCtrl.js" />
-    <Content Include="Apps\directives\paFlightChart.js" />
     <Content Include="Apps\Services\Order.js" />
     <Content Include="Apps\templates\about.html" />
+    <Content Include="Apps\templates\orderComplete.html" />
     <Content Include="Apps\templates\checkout.html" />
     <Content Include="Apps\templates\dashboard.html" />
     <Content Include="Apps\templates\itemDetail.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\CRUDStyleSheet.css" />
     <Content Include="Content\images\edit.png" />
     <Content Include="Content\images\erase.png" />
     <Content Include="Content\images\ItemImage\CD1.png" />
@@ -240,6 +239,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Apps\directives\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>

@@ -15,5 +15,6 @@ namespace OnlineShop.Models
         Basket Remove(int id);
         Order GetOrder(int id);
         Basket Post(Basket basket);
+        Order CreateOrder();
     }
 }

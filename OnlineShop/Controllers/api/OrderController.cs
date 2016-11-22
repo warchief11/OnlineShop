@@ -21,9 +21,9 @@ namespace OnlineShop.Controllers.api
             return _orderService.GetOrder(id);
         }
         
-        public void Post(Order order)
+        public Order Post()
         {
-            //_orderService.Post(order);
+           return _orderService.CreateOrder();
         }
     }
 }

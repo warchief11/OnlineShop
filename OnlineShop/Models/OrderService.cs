@@ -39,26 +39,36 @@ namespace OnlineShop.Models
             _basket = _basket ?? new Basket
             {
                 Id = userId,
-                OrderItems = new List<OrderItem>
-                {
-                   DummyOrderItem(userId),
-                   DummyOrderItem(userId + 1),
-                   DummyOrderItem(userId + 2),
-                   DummyOrderItem(userId + 3)
-                }
+                OrderItems = new List<OrderItem>()
             };
             return _basket;
         }
 
         public Basket AddItem(Item item)
         {
-            _basket.OrderItems.Add(new OrderItem { Item = DummyItem(_basket.Id), Quantity = 1 });
+            _basket = GetBasket(1);
+
+            var orderItem = _basket.OrderItems.FirstOrDefault(o => o.Item.Id == item.Id);
+            if(orderItem == null)
+            {
+                orderItem = new OrderItem { Item = DummyItem(item.Id) };
+                _basket.OrderItems.Add(orderItem);
+            }
+            orderItem.Quantity++;
+            CalculatePricing(_basket);
             return _basket;
+        }
+
+        private void CalculatePricing(Basket basket)
+        {
+            _basket.OrderItems.ForEach(o => o.Cost = decimal.Round(o.Item.Price * o.Quantity * (1 - o.Item.Discount / 100), 2));            
+            _basket.TotalCost = _basket.OrderItems.Any() ? _basket.OrderItems.Sum(o => o.Cost) : 0;
         }
 
         public Basket Remove(int id)
         {
             _basket.OrderItems.RemoveAll(o => o.Item.Id == id);
+            CalculatePricing(_basket);
             return _basket;
         }
 
@@ -88,6 +98,12 @@ namespace OnlineShop.Models
             _order.TotalCost = _order.ItemCost + _order.Shippingcost;
             _order.ShippedTo = "Mr Smith";
             return _order;
+        }
+        public Order CreateOrder()
+        {
+            var order = GetOrder(_basket.Id);
+            _basket = null;            
+            return order;
         }
 
         public Basket Post(Basket basket)

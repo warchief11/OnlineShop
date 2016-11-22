@@ -6,20 +6,17 @@ DashboardCtrl.$inject = ['$scope', 'Order'];
 
 function DashboardCtrl($scope, Order) {
     var vm = this;
+    vm.addingToCart = false;
 
-    Order.getItems().then(function (items) {
+    vm.getMenu = Order.getItems().then(function (items) {
         vm.items = items;
-        $scope.items = items;
     });
-   
-    vm.gateSelected = function () {
-        Parking.getReservations(vm.selectedGate.Id).then(function (reservations) {
-            vm.reservations = reservations;
+
+    vm.addToBasket = function (item) {
+        vm.addingToCart = true;
+        Order.addToBasket(item).then(function () {
+            vm.addingToCart = false;
         });
     };
-
-    //vm.addToBasket = function (item) {
-    //    vm.items = Order.addToBasket(item)
-    //};
     return vm;
 };

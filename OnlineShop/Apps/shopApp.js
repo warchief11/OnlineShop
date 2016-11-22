@@ -1,7 +1,7 @@
 ﻿(function () {
     'use Strict';
 
-    var app = angular.module('shopApp', ['ui.router']);
+    var app = angular.module('shopApp', ['ui.router', 'ngAnimate']);
 
     app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/');
@@ -16,6 +16,10 @@
                  templateUrl: 'Apps/templates/checkout.html',
                  controller: 'CheckoutCtrl as vm',
              })
+            .state('orderComplete', {
+                url: '/order',
+                templateUrl: 'Apps/templates/orderComplete.html'
+            })
              .state('about', {
                 url: '/about',
                 templateUrl: 'Apps/templates/about.html',

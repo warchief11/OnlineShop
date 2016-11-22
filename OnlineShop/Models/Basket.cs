@@ -6,5 +6,6 @@ namespace OnlineShop.Models
     {
         public int Id { get; set; }
         public List<OrderItem> OrderItems { get; set; }
+        public decimal TotalCost { get; set; }
     }
 }

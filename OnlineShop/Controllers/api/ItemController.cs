@@ -8,7 +8,7 @@ using OnlineShop.Models;
 
 namespace OnlineShop.Controllers.api
 {
-    [Route("api/basket/{basketId}/item")]
+    [Route("api/basket/{basketId}/item/{id?}")]
     public class ItemController : BaseAPIController
     {
         public ItemController(IOrderService orderService) : base(orderService)
@@ -21,6 +21,7 @@ namespace OnlineShop.Controllers.api
             _orderService.AddItem(item);
         }
 
+        [HttpDelete]
         public void Delete(int basketId, int id)
         {
             _orderService.Remove(id);
