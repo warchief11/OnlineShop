@@ -19,3 +19,7 @@ textarea {
 .ng-show {
     transition: linear;
 }
+
+span .ang-err{
+    color: red;
+}

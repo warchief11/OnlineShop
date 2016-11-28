@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace OnlineShop.Models
 {
@@ -9,9 +7,13 @@ namespace OnlineShop.Models
     {
         public int Id { get; set; }
         public IList<OrderItem> OrderItems { get; set; }
+        [DataType(DataType.Currency)]
         public decimal ItemCost { get; set; }
+        [DataType(DataType.Currency)]
         public decimal Shippingcost { get; set; }
+        [DataType(DataType.Currency)]
         public decimal TotalCost { get; set; }
-        public string ShippedTo { get; set; }
+        public User ShippedTo { get; set; }
+        public Address ShippingAddress { get; set; }
     }
 }

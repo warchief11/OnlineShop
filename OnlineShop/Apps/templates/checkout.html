@@ -39,5 +39,14 @@
 
     <h3>Total cost: {{vm.basket.TotalCost}}</h3>
 
+    <ng-form name="myForm" ng-sumbit="vm.createOrder()" novalidate>
+        Ship To:
+        <input type="text" class="form-control" name="shippedTo" ng-model="ShippedTo" required />
+        <span class="ang-err" ng-show="myForm.ShippedTo.$error.required && myForm.uname.$dirty">Shipped to address is required</span>
+        <br />
+        Email:
+        <input type="email" class="form-control" ng-model="Email" required/>
+        <button ng-disabled="!myForm.$valid" type="submit" class="btn btn-primary" ui-sref="orderComplete">Submit Order</button>
+    </ng-form>
     <a class="btn btn-primary" ng-click="vm.createOrder()" ui-sref="orderComplete">Checkout Order</a>
 </div>

@@ -141,13 +141,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Apps\controllers\LoginCtrl.js" />
     <Content Include="Apps\controllers\CheckoutCtrl.js" />
     <Content Include="Apps\Services\Order.js" />
     <Content Include="Apps\templates\about.html" />
     <Content Include="Apps\templates\orderComplete.html" />
     <Content Include="Apps\templates\checkout.html" />
     <Content Include="Apps\templates\dashboard.html" />
-    <Content Include="Apps\templates\itemDetail.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\edit.png" />
@@ -179,6 +179,8 @@
     <Content Include="Global.asax" />
     <Content Include="Apps\shopApp.js" />
     <Content Include="Apps\controllers\DashboardCtrl.js" />
+    <Content Include="Scripts\angular-animate.js" />
+    <Content Include="Scripts\angular-animate.min.js" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular-route.min.js" />
@@ -190,12 +192,14 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-route.min.js.map" />
+    <Content Include="Scripts\angular-animate.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\smart-table.js" />
     <Content Include="Scripts\smart-table.min.js" />
+    <Content Include="Scripts\ui-bootstrap-tpls-2.2.0.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -212,12 +216,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Basket.cs" />
     <Compile Include="Models\IOrderService.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\OrderService.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

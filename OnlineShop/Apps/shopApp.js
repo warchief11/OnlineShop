@@ -26,6 +26,7 @@
              });
     }]);
 
+    //uncomment these lines for troubleshooting
     //app.run(function ($rootScope) {
     //    var $rootScope = angular.element(document.querySelectorAll("[ui-view]")[0]).injector().get('$rootScope');
 
