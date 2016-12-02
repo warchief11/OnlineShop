@@ -1,28 +1,45 @@
 ﻿angular.module('shopApp')
-    .controller('CheckoutCtrl', CheckoutCtrl);
+    .controller('LoginCtrl', LoginCtrl);
 
-CheckoutCtrl.$inject = ['$scope', 'Order'];
+LoginCtrl.$inject = ['$scope', '$timeout', 'AuthService'];
 
-function CheckoutCtrl($scope, Order) {
+function LoginCtrl($scope, $timeout, AuthService) {
     var vm = this;
-    
-    //TODO: remove hardcoding
-    vm.getBasket = Order.getBasket().then(function (basket) {
-        vm.basket = basket;
-        vm.orderItems = basket.OrderItems;
-    });
+    vm.registration = {
+        userName: "",
+        password: "",
+        confirmPassword: ""
+    };
 
-    vm.removeItem = function (id) {
-        Order.removeFromBasket(id).then(function (response) {
-            Order.getBasket().then(function (basket) {
-                vm.basket = basket;
-                vm.orderItems = basket.OrderItems;
-            });
+    vm.message = "";
+    vm.savedSuccessfully = false;
+    vm.signUp = function () {
+        AuthService.signUp(registration).then(function (response) {
+            savedSuccessfully = true;
+            message = "User has been registered successfully, you will be redirected to login page in 2 seconds.";
+        },
+        function (response) {
+            var errors = [];
+            for (var key in response.data.modelState) {
+                for (var i = 0; i < response.data.modelState[key].length; i++) {
+                    errors.push(response.data.modelState[key][i]);
+                }
+            }
+            message = "Failed to register user due to:" + errors.join(' ');
         });
     };
 
-    vm.createOrder = function (id) {
-        Order.createOrder(id).then(funct)
+    vm.login = function () {
+        AuthService.login(loginData);
     }
+
+    var startTimer = function () {
+        var timer = $timeout(function () {
+            $timeout.cancel(timer);
+            $location.path('/logIn');
+        }, 2000);
+    }
+
+
     return vm;
 };

@@ -146,6 +146,8 @@
     <Content Include="Apps\Services\AuthService.js" />
     <Content Include="Apps\Services\Order.js" />
     <Content Include="Apps\templates\about.html" />
+    <Content Include="Apps\templates\logIn.html" />
+    <Content Include="Apps\templates\signUp.html" />
     <Content Include="Apps\templates\orderComplete.html" />
     <Content Include="Apps\templates\checkout.html" />
     <Content Include="Apps\templates\dashboard.html" />

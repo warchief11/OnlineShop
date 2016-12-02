@@ -20,10 +20,19 @@
                 url: '/order',
                 templateUrl: 'Apps/templates/orderComplete.html'
             })
-             .state('about', {
+            .state('logIn', {
+                url: '/logIn',
+                templateUrl: 'Apps/templates/logIn.html'
+            })
+            .state('signUp', {
+                url: '/signUp',
+                templateUrl: 'Apps/templates/signUp.html',
+                controller: 'LoginCtrl as vm'
+            })
+            .state('about', {
                 url: '/about',
                 templateUrl: 'Apps/templates/about.html',
-             });
+            });
     }]);
 
     //uncomment these lines for troubleshooting
