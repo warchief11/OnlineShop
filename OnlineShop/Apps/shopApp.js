@@ -1,7 +1,7 @@
 ﻿(function () {
     'use Strict';
 
-    var app = angular.module('shopApp', ['ui.router', 'ngAnimate']);
+    var app = angular.module('shopApp', ['ui.router', 'ngAnimate', 'ngStorage']);
 
     app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/');

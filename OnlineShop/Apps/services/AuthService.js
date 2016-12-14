@@ -2,9 +2,9 @@
 
 angular.module('shopApp').factory('AuthService', AuthService);
 
-AuthService.$inject = ['$http', '$q', 'localStorageService']
+AuthService.$inject = ['$http', '$q', '$localStorage']
 
-function AuthService($http, $q, localStorageService) {
+function AuthService($http, $q, $localStorage) {
 
     var serviceBase = 'http://localhost:50090/';
     var authServiceFactory = {};
@@ -28,7 +28,7 @@ function AuthService($http, $q, localStorageService) {
 
         $http.post(serviceBase + 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
 
-            localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName });
+            $localStorage.authorizationData = { token: response.access_token, userName: loginData.userName };
 
             _authentication.isAuth = true;
             _authentication.userName = loginData.userName;
@@ -49,7 +49,7 @@ function AuthService($http, $q, localStorageService) {
     };
     var _fillAuthData = function () {
 
-        var authData = localStorageService.get('authorizationData');
+        var authData = localStorageService.authorizationData;
         if (authData) {
             _authentication.isAuth = true;
             _authentication.userName = authData.userName;

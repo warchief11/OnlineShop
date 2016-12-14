@@ -18,6 +18,7 @@ namespace OnlineShop
                    .Include("~/Scripts/angular-animate.min.js")
                    .Include("~/Scripts/AngularUI/ui-router.min.js")
                    .Include("~/Scripts/AngularUI/ui-bootstrap-tpls-2.2.0.min.js")
+                   .Include("~/Scripts/ngStorage.min.js")
                    .Include("~/Scripts/smart-table.min.js")
                    );
 
