@@ -22,7 +22,8 @@
             })
             .state('logIn', {
                 url: '/logIn',
-                templateUrl: 'Apps/templates/logIn.html'
+                templateUrl: 'Apps/templates/logIn.html',
+                controller: 'LoginCtrl as vm'
             })
             .state('signUp', {
                 url: '/signUp',
@@ -35,6 +36,9 @@
             });
     }]);
 
+    app.config(function($httpProvider){
+        $httpProvider.interceptors.push('AuthInterceptor');
+    });
     //uncomment these lines for troubleshooting
     //app.run(function ($rootScope) {
     //    var $rootScope = angular.element(document.querySelectorAll("[ui-view]")[0]).injector().get('$rootScope');

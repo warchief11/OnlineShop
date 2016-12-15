@@ -143,6 +143,7 @@
   <ItemGroup>
     <Content Include="Apps\controllers\LoginCtrl.js" />
     <Content Include="Apps\controllers\CheckoutCtrl.js" />
+    <Content Include="Apps\Services\AuthInterceptor.js" />
     <Content Include="Apps\Services\AuthService.js" />
     <Content Include="Apps\Services\Order.js" />
     <Content Include="Apps\templates\about.html" />

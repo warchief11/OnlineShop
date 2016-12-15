@@ -1,4 +1,4 @@
-﻿'use strict';
+'use strict';
 
 angular.module('shopApp').factory('AuthService', AuthService);
 
@@ -13,9 +13,15 @@ function AuthService($http, $q, $localStorage) {
         userName: ""
     };
 
-    var _saveRegistration = function (registration) {
+    var _signUp = function (registration) {
         _logOut();
+        var deferred = $q.defer();
         return $http.post(serviceBase + 'api/account/register', registration).then(function (response) {
+            deferred.resolve(response);
+            return response;
+        },
+        function (response) {
+            deferred.reject(err);
             return response;
         });
 
@@ -57,7 +63,7 @@ function AuthService($http, $q, $localStorage) {
 
     };
 
-    authServiceFactory.saveRegistration = _saveRegistration;
+    authServiceFactory.signUp = _signUp;
     authServiceFactory.login = _login;
     authServiceFactory.logOut = _logOut;
     authServiceFactory.fillAuthData = _fillAuthData;
