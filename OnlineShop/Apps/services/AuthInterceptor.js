@@ -17,16 +17,15 @@ function AuthInterceptor($log, $q, $localStorage, $location) {
         return config;
     };
 
-    //var _responseError = function (rejection) {
-    //    if (rejection.status = '401') {
-    //        $location.path('/login');
-    //    }
-    //    return rejection;
-    //};
+    var _responseError = function (rejection) {
+        if (rejection.status = '401') {
+            $location.path('/login');
+        }
+        return rejection;
+    };
 
     return {
-        request: _request
-       // responseError: _responseError
+        request: _request,
+        responseError: _responseError
     };
-    return {};
 };

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using OnlineShop.Models;
+using OnlineShop.API.Models;
 using NUnit.Framework;
 using System.Web.Http;
 using System.Net.Http;
+using OnlineShop.API.Controllers;
 
 namespace OnlineShop.Controllers.api
 {

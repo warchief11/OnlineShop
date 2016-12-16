@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Practices.Unity;
+using OnlineShop.API.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -19,6 +21,15 @@ namespace OnlineShop.API
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            RegisterIOC(config);
+        }
+
+        private static void RegisterIOC(HttpConfiguration config)
+        {
+            var container = new UnityContainer();
+            container.RegisterType<IOrderService, OrderService>(new HierarchicalLifetimeManager());
+            config.DependencyResolver = new UnityResolver(container);
         }
     }
 }
