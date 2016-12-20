@@ -16,5 +16,7 @@ namespace OnlineShop.API.Models
         [DataType(DataType.ImageUrl)]
         [StringLength(1024)]
         public string ImageURL { get; set; }
+
+        public List<Review> Reviews { get; set; }
     }
 }

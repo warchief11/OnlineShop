@@ -2,11 +2,10 @@
 
 angular.module('shopApp').factory('AuthService', AuthService);
 
-AuthService.$inject = ['$http', '$q', '$localStorage']
+AuthService.$inject = ['$http', '$q', '$localStorage', 'ngAppSettings']
 
-function AuthService($http, $q, $localStorage) {
+function AuthService($http, $q, $localStorage, ngAppSettings) {
 
-    var serviceBase = 'http://localhost:50090/';
     var authServiceFactory = {};
     var _authentication = {
         isAuth: false,
@@ -16,7 +15,7 @@ function AuthService($http, $q, $localStorage) {
     var _signUp = function (registration) {
         _logOut();
         var deferred = $q.defer();
-        return $http.post(serviceBase + 'api/account/register', registration).then(function (response) {
+        return $http.post(ngAppSettings.apiServiceBaseUri + 'api/account/register', registration).then(function (response) {
             deferred.resolve(response);
             return response;
         },
@@ -32,7 +31,7 @@ function AuthService($http, $q, $localStorage) {
 
         var deferred = $q.defer();
 
-        $http.post(serviceBase + 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
+        $http.post(ngAppSettings.apiServiceBaseUri + 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
 
             $localStorage.authorizationData = { token: response.access_token, userName: loginData.userName };
 

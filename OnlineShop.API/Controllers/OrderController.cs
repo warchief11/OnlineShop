@@ -8,6 +8,7 @@ using OnlineShop.API.Models;
 
 namespace OnlineShop.API.Controllers
 {
+    [Authorize]
     public class OrderController : BaseAPIController
     {
         public OrderController(IOrderService orderService) : base(orderService)

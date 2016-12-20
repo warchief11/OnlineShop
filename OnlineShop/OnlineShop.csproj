@@ -118,6 +118,7 @@
     <Content Include="Apps\Services\AuthService.js" />
     <Content Include="Apps\Services\Order.js" />
     <Content Include="Apps\templates\about.html" />
+    <Content Include="Apps\templates\itemDetail.html" />
     <Content Include="Apps\templates\logIn.html" />
     <Content Include="Apps\templates\signUp.html" />
     <Content Include="Apps\templates\orderComplete.html" />
@@ -150,6 +151,7 @@
     <Content Include="Content\images\ItemImage\Uploaded.png" />
     <Content Include="Content\images\ng-loader.gif" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Apps\shopApp.js" />
@@ -159,6 +161,10 @@
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular-route.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\AngularUI\ui-router.js" />
@@ -176,7 +182,6 @@
     <Content Include="Scripts\ngStorage.min.js" />
     <Content Include="Scripts\smart-table.js" />
     <Content Include="Scripts\smart-table.min.js" />
-    <Content Include="Scripts\ui-bootstrap-tpls-2.2.0.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

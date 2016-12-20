@@ -12,14 +12,14 @@ namespace OnlineShop
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/vendor")
-                   .Include("~/Scripts/jquery-1.10.2.min.js")
-                   .Include("~/Scripts/bootstrap.min.js")
-                   .Include("~/Scripts/angular.min.js")
-                   .Include("~/Scripts/angular-animate.min.js")
-                   .Include("~/Scripts/AngularUI/ui-router.min.js")
-                   .Include("~/Scripts/AngularUI/ui-bootstrap-tpls-2.2.0.min.js")
-                   .Include("~/Scripts/ngStorage.min.js")
-                   .Include("~/Scripts/smart-table.min.js")
+                   .Include("~/Scripts/jquery-1.10.2.js")
+                   .Include("~/Scripts/bootstrap.js")
+                   .Include("~/Scripts/angular.js")
+                   .Include("~/Scripts/angular-animate.js")
+                   .Include("~/Scripts/AngularUI/ui-router.js")
+                   .Include("~/Scripts/angular-ui/ui-bootstrap-tpls.js")
+                   .Include("~/Scripts/ngStorage.js")
+                   .Include("~/Scripts/smart-table.js")
                    );
 
             bundles.Add(new ScriptBundle("~/bundles/custom")
