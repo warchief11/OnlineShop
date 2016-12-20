@@ -1,10 +1,10 @@
-﻿/// <reference path="flightParkModule.js" />
+﻿console.log("DashboardController is loaded..");
 angular.module('shopApp')
     .controller('DashboardCtrl', DashboardCtrl);
 
-DashboardCtrl.$inject = ['$scope', 'Order'];
+DashboardCtrl.$inject = ['$scope', '$uibModal', 'Order', ];
 
-function DashboardCtrl($scope, Order) {
+function DashboardCtrl($scope, $uibModal, Order) {
     var vm = this;
     vm.addingToCart = false;
 
@@ -18,5 +18,12 @@ function DashboardCtrl($scope, Order) {
             vm.addingToCart = false;
         });
     };
+
+    vm.displayItemDetail = function (item) {
+        $uibModal.open({
+            animation: true,
+            templateUrl: 'Apps/templates/itemDetail.html'
+        })
+    }
     return vm;
 };

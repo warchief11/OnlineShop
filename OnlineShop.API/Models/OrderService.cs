@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace OnlineShop.Models
+namespace OnlineShop.API.Models
 {
     public class OrderService : IOrderService
     {
@@ -96,7 +96,7 @@ namespace OnlineShop.Models
             _order.ItemCost = _order.OrderItems.Any() ? _order.OrderItems.Sum(o => o.Item.Price * o.Quantity) : 0;
             _order.Shippingcost = 14;
             _order.TotalCost = _order.ItemCost + _order.Shippingcost;
-            _order.ShippedTo = "Mr Smith";
+            _order.ShippedTo = new User { FirstName = "Bruce", LastName = "Wayne" , Id = 1};
             return _order;
         }
         public Order CreateOrder()

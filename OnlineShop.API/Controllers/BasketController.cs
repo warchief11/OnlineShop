@@ -4,9 +4,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using OnlineShop.Models;
+using OnlineShop.API.Models;
 
-namespace OnlineShop.Controllers.api
+namespace OnlineShop.API.Controllers
 {
     public class BasketController : BaseAPIController
     {

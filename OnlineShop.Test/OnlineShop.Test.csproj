@@ -68,6 +68,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OnlineShop.API\OnlineShop.API.csproj">
+      <Project>{44ca90a4-5cd4-43bf-98ed-a3919f8b5ccc}</Project>
+      <Name>OnlineShop.API</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OnlineShop\OnlineShop.csproj">
       <Project>{bf377aaa-5fe4-4238-b9fe-9aa54f8917c6}</Project>
       <Name>OnlineShop</Name>

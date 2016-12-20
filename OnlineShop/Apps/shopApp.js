@@ -1,7 +1,8 @@
 ﻿(function () {
     'use Strict';
+    console.log("shopApp module is loaded..");
 
-    var app = angular.module('shopApp', ['ui.router', 'ngAnimate']);
+    var app = angular.module('shopApp', ['ui.router', 'ngAnimate', 'ngStorage', 'ui.bootstrap']);
 
     app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/');
@@ -20,12 +21,32 @@
                 url: '/order',
                 templateUrl: 'Apps/templates/orderComplete.html'
             })
-             .state('about', {
+            .state('logIn', {
+                url: '/logIn',
+                templateUrl: 'Apps/templates/logIn.html',
+                controller: 'LoginCtrl as vm'
+            })
+            .state('signUp', {
+                url: '/signUp',
+                templateUrl: 'Apps/templates/signUp.html',
+                controller: 'LoginCtrl as vm'
+            })
+            .state('about', {
                 url: '/about',
                 templateUrl: 'Apps/templates/about.html',
-             });
+            });
     }]);
 
+    app.config(function($httpProvider){
+        $httpProvider.interceptors.push('AuthInterceptor');
+        //$httpProvider.interceptors.push('TrafficInterceptor');
+    });
+    
+    app.constant('ngAppSettings', {
+        apiServiceBaseUri: 'http://localhost:50090/'
+    });
+        
+    //uncomment these lines for troubleshooting
     //app.run(function ($rootScope) {
     //    var $rootScope = angular.element(document.querySelectorAll("[ui-view]")[0]).injector().get('$rootScope');
 

@@ -1,12 +1,7 @@
-﻿using OnlineShop.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using OnlineShop.API.Models;
 using System.Web.Http;
 
-namespace OnlineShop.Controllers.api
+namespace OnlineShop.API.Controllers
 {
     public abstract class BaseAPIController : ApiController
     {

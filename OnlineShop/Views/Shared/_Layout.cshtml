@@ -6,12 +6,11 @@
     <title>@ViewBag.Title - Demo</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/CRUDStyleSheet.css" rel="stylesheet" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
     <base href="/">
 </head>
 <body ng-app="shopApp" class="ng-cloak">
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -26,6 +25,8 @@
                 <a class="navbar-brand pull-right" ui-sref="checkout">
                     <text class="glyphicon glyphicon-shopping-cart glyphicon-align-right"> Checkout</text>
                 </a>
+                <a class="navbar-brand pull-right" ui-sref="logIn">Sign In</a>
+                <a class="navbar-brand pull-right" ui-sref="signUp">Register</a>
                 <a class="navbar-brand pull-right" ui-sref="about">About</a>
             </div>
             <div class="navbar-collapse collapse">

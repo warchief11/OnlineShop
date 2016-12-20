@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace OnlineShop.Models
+namespace OnlineShop.API.Models
 {
     public class Item
     {
@@ -16,5 +16,7 @@ namespace OnlineShop.Models
         [DataType(DataType.ImageUrl)]
         [StringLength(1024)]
         public string ImageURL { get; set; }
+
+        public List<Review> Reviews { get; set; }
     }
 }
