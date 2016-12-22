@@ -163,6 +163,8 @@
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Basket.cs" />
+    <Compile Include="Models\DAL\ShopContext.cs" />
+    <Compile Include="Models\DAL\ShopDataInitializer.cs" />
     <Compile Include="Models\IOrderService.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Order.cs" />

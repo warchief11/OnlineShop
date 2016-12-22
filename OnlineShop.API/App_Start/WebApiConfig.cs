@@ -1,5 +1,6 @@
 ﻿using Microsoft.Practices.Unity;
 using OnlineShop.API.Models;
+using OnlineShop.API.Models.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,7 @@ namespace OnlineShop.API
         {
             var container = new UnityContainer();
             container.RegisterType<IOrderService, OrderService>(new HierarchicalLifetimeManager());
+            container.RegisterType<ShopContext, ShopContext>(new HierarchicalLifetimeManager());
             config.DependencyResolver = new UnityResolver(container);
         }
     }

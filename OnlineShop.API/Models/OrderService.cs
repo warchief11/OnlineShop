@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnlineShop.API.Models.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,12 @@ namespace OnlineShop.API.Models
         private static List<Item> _items = null;
         private static Basket _basket;
         private static Order _order;
+        private ShopContext _repo;
+
+        public OrderService(ShopContext context)
+        {
+            _repo = context;
+        }
         #region Static Helper Methods
 
         public static Item DummyItem(int userId)
@@ -74,18 +81,7 @@ namespace OnlineShop.API.Models
 
         public List<Item> GetMenu()
         {
-            _items = _items ?? new List<Item>
-            {
-                DummyItem(1),
-                DummyItem(2),
-                DummyItem(3),
-                DummyItem(4),
-                DummyItem(5),
-                DummyItem(6),
-                DummyItem(7),
-                DummyItem(8)
-            };
-            return _items;
+            return _repo.Items.ToList();
         }
 
         public Order GetOrder(int id)
