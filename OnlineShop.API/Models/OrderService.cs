@@ -8,7 +8,6 @@ namespace OnlineShop.API.Models
 {
     public class OrderService : IOrderService
     {
-        private static List<Item> _items = null;
         private static Basket _basket;
         private static Order _order;
         private ShopContext _repo;

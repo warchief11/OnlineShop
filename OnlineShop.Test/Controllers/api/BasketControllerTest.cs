@@ -6,6 +6,7 @@ using NUnit.Framework;
 using System.Web.Http;
 using System.Net.Http;
 using OnlineShop.API.Controllers;
+using OnlineShop.API.Models.DAL;
 
 namespace OnlineShop.Controllers.api
 {
@@ -17,7 +18,7 @@ namespace OnlineShop.Controllers.api
         public void Setup()
         {
             //no need to mock this service, as this is a mock service itself of 3rd party api
-            _orderService = new OrderService();
+            _orderService = new OrderService(new ShopContext());
         }
         [Test]
         public void GetBasket_Should_ReturnBasket()
